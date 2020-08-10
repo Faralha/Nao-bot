@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client();
 
-const token = 'NzI5NjA5MzYzMDUxOTA1MDY2.XwLb2w.7Z4_l2rp0uB5l1sNPgCSPt4KDwI';
+const token = 'thx-discord-for-the-warning-:>';
 
 const PREFIX = '>';
 
