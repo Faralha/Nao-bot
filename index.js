@@ -56,27 +56,30 @@ bot.on('message', message=>{
                 message.channel.send('Perintah tidak diketahui. Ketik A! help untuk melihat command')
             }
              break;
-         //case 'kick':
-             if(!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send('Kamu gapunya ijinnya kaka <3')
-             const user = message.mentions.users.first();
-             
-             if(user){
-                 const member = message.mentions.members.first();  
-                 if(member){
-                    if(!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send('Sesama admin jangan saling kick donk :>') 
-                    member.kick('Kamu telah melanggar salah satu aturan dan dikeluarkan dari Grealm!').then(() =>{
-                         message.channel.send(`\`${user.tag} berhasil dikeluarkan!\``);
-                     }).catch(err =>{
-                         message.channel.send('Saya gagal menendang player keluar. Gomenne!');
-                         console.log(err);
-                     });
-                 } else{
-                     message.channel.send(`Ye kontol orgnya kgk di server ini cukk`)
-                 }
-             } else{
-                 message.channel.send('Orangnya gaada di serper ini su / kosong?!!')
-             }
-             break;
+             case 'kick':
+                if(!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send('Kamu gapunya ijinnya kaka <3')
+                const user = message.mentions.users.first();
+                
+                if(user){
+                    const member = message.mentions.members.first();  
+                    
+    
+                    if(member.hasPermission('ADMINISTRATOR')) return message.channel.send('Mupeng :>')
+                    else if (member){
+                       
+                       member.kick('Kamu telah melanggar salah satu aturan dan dikeluarkan dari Grealm!').then(() =>{
+                            message.channel.send(`\`${user.tag} berhasil dikeluarkan!\``);
+                        }).catch(err =>{
+                            message.channel.send('Saya gagal menendang player keluar. Gomenne!');
+                            console.log(err);
+                        });
+                    } else{
+                        message.channel.send(`Ye kontol orgnya kgk di server ini cukk`)
+                    }
+                } else{
+                    message.channel.send('Orangnya gaada di serper ini su / kosong?!!')
+                }
+                break;
          case 'poll':
              const Embed = new Discord.MessageEmbed()
              .setColor(1752220)
