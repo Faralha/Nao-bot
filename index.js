@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client();
-
-const token = 'thx-discord-for-the-warning-:>';
+const {token} = require('./config.js')
+const token = token;
 
 const PREFIX = '>';
 
@@ -29,8 +29,7 @@ bot.on('ready', () =>{
 
 
 bot.on('message', message=>{
-    mesage = message.content.toLowerCase();
-    let args = mesage.substring(PREFIX.length).split(" ");
+
     const images = ["https://bit.ly/2B5cBPc", "https://bit.ly/2ZdX7Ae", "https://bit.ly/2Zb8JUz", "https://bit.ly/2YACsHr", "https://bit.ly/2BBGsOZ", "https://bit.ly/2NtsSzS", "https://bit.ly/3dAsSbZ", "https://bit.ly/2Z8T6gE"]
     const image = images[Math.floor(Math.random() * images.length)];
     const atitt = ("https://bit.ly/aatit");
@@ -38,6 +37,10 @@ bot.on('message', message=>{
     const unyu1 = unyu[Math.floor(Math.random() * unyu.length)];
     const ngap = ["aku lagi gabut", "ngeliatin kamu <3", "melihat bintang bintang disana", "main game :>", "ngasih makan kucing :>"]
     const ngap1 = ngap[Math.floor(Math.random() * ngap.length)];
+    
+    if(!message.content.startsWith(PREFIX) || message.author.bot) return;
+    mesage = message.content.toLowerCase();
+    const args = mesage.slice(PREFIX.length).split(/ +/);
     switch(args[0]){
 
 
